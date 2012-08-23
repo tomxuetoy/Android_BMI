@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">BMI</string>
+    <string name="person_height">身高 (cm)</string>
+    <string name="person_weight">体重 (kg)</string>
+    <string name="button_calculate">计算BMI值</string>
+    <string name="suggestion_text">给点儿意见</string>
+    <string name="result_text">结果=?</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_bmi">Bmi</string>
+
+</resources>
