@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.Menu;
 
 import android.view.View;
@@ -57,9 +59,24 @@ public class Bmi extends Activity {
 			    }else{
 			    view_suggest.setText(R.string.advice_average);
 			    	   }
-			    }
-    };
+			    openOptionsDialog();
+			    }		    
+  };
 
+  
+  private void openOptionsDialog() {
+  	new AlertDialog.Builder(Bmi.this)
+  	.setTitle(R.string.about_title)
+  	.setMessage(R.string.about_msg)
+  	.setPositiveButton(
+	  			R.string.ok_label,
+	  			new DialogInterface.OnClickListener(){			  	
+		  			public void onClick(DialogInterface dialoginterface, int i){}
+	  				}
+  			)
+  	.show();
+  	}
+  
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_bmi, menu);
