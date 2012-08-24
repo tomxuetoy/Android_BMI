@@ -15,5 +15,7 @@
     <string name="ok_label">确认</string>
     <string name="input_error">打错了吗？只能输入数字喔</string>
     <string name="toast_introducion">BMI 计算器</string>
+    <string name="homepage_label">首页</string>
+    <string name="homepage_uri">http://androidbmi.googlecode.com/</string>
 
 </resources>

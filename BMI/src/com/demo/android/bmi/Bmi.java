@@ -2,14 +2,17 @@ package com.demo.android.bmi;
 
 import java.text.DecimalFormat;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.Menu;
-
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Bmi extends Activity {
@@ -70,14 +73,27 @@ public class Bmi extends Activity {
 	};
 
 	private void openOptionsDialog() {
-		Toast.makeText(Bmi.this, R.string.toast_introducion, Toast.LENGTH_SHORT)
-				.show();
-		/*
-		 * new AlertDialog.Builder(Bmi.this) .setTitle(R.string.about_title)
-		 * .setMessage(R.string.about_msg) .setPositiveButton(
-		 * R.string.ok_label, new DialogInterface.OnClickListener(){ public void
-		 * onClick(DialogInterface dialoginterface, int i){} } ) .show();
-		 */
+		new AlertDialog.Builder(this)
+				.setTitle(R.string.about_title)
+				.setMessage(R.string.about_msg)
+				.setPositiveButton(R.string.ok_label,
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialoginterface, int i) {
+							}
+						})
+				.setNegativeButton(R.string.homepage_label,
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialoginterface, int i) {
+								// go to url
+								Uri uri = Uri
+										.parse(getString(R.string.homepage_uri));
+								Intent intent = new Intent(Intent.ACTION_VIEW,
+										uri);
+								startActivity(intent);
+							}
+						}).show();
 	}
 
 	@Override
