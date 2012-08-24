@@ -46,6 +46,7 @@ public final class R {
         public static final int person_weight=0x7f040005;
         public static final int suggestion_text=0x7f040007;
         public static final int title_activity_bmi=0x7f04000a;
+        public static final int toast_introducion=0x7f04000f;
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;
