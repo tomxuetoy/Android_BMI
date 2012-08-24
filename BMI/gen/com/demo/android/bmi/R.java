@@ -39,6 +39,7 @@ public final class R {
         public static final int app_name=0x7f040003;
         public static final int bmi_result=0x7f040008;
         public static final int button_calculate=0x7f040006;
+        public static final int input_error=0x7f04000e;
         public static final int menu_settings=0x7f040009;
         public static final int ok_label=0x7f04000d;
         public static final int person_height=0x7f040004;

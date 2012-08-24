@@ -13,5 +13,6 @@
 			作者 gasolin\n\n
 			gasolin+android@gmail.com</string>
 			<string name="ok_label">确认</string>
+			<string name="input_error">打错了吗？只能输入数字喔</string>
 
 </resources>
