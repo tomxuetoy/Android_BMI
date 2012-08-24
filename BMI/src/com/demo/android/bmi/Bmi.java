@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Bmi extends Activity {
 
@@ -65,7 +66,8 @@ public class Bmi extends Activity {
 
   
   private void openOptionsDialog() {
-  	new AlertDialog.Builder(Bmi.this)
+	  Toast.makeText(Bmi.this, "BMI 计算器", Toast.LENGTH_SHORT).show();
+  	/* new AlertDialog.Builder(Bmi.this)
   	.setTitle(R.string.about_title)
   	.setMessage(R.string.about_msg)
   	.setPositiveButton(
@@ -74,7 +76,7 @@ public class Bmi extends Activity {
 		  			public void onClick(DialogInterface dialoginterface, int i){}
 	  				}
   			)
-  	.show();
+  	.show(); */
   	}
   
     @Override
