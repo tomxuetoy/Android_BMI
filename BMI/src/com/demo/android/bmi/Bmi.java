@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,7 +65,7 @@ public class Bmi extends Activity {
 				} else {
 					view_suggest.setText(R.string.advice_average);
 				}
-				openOptionsDialog();
+//				openOptionsDialog();
 			} catch (Exception err) {
 				Toast.makeText(Bmi.this, R.string.input_error,
 						Toast.LENGTH_SHORT).show();
@@ -96,9 +97,33 @@ public class Bmi extends Activity {
 						}).show();
 	}
 
+	protected static final int MENU_ABOUT = Menu.FIRST;
+	protected static final int MENU_Quit = Menu.FIRST + 1;
+
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		menu.add(0, MENU_ABOUT, 0, "关于...");
+		menu.add(0, MENU_Quit, 0, "结束");
+		return true;
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		case MENU_ABOUT:
+			openOptionsDialog();
+			break;
+		case MENU_Quit:
+			finish();
+			break;
+		}
+		return true;
+	}
+
+/*	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_bmi, menu);
 		return true;
-	}
+	}*/
 }
