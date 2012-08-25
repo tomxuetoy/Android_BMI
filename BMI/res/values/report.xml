@@ -2,6 +2,7 @@
 <resources>
 
     <string name="report_title">BMI 报告</string>
+    <string name="report_back">前一页</string>
     <string name="report_content">BMI report content</string>
 
 </resources>

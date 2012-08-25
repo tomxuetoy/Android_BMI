@@ -1,7 +1,6 @@
 package com.demo.android.bmi;
 
-import java.text.DecimalFormat;
-
+import android.util.Log;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,10 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Bmi extends Activity {
+	private static final String TAG = "Bmi";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,15 +27,20 @@ public class Bmi extends Activity {
 	private Button button_calc;
 	private EditText field_height;
 	private EditText field_weight;
-	private TextView view_result;
-	private TextView view_suggest;
+
+	/*
+	 * private TextView view_result; private TextView view_suggest;
+	 */
 
 	private void findViews() {
 		button_calc = (Button) findViewById(R.id.submit);
 		field_height = (EditText) findViewById(R.id.height);
 		field_weight = (EditText) findViewById(R.id.weight);
-		view_result = (TextView) findViewById(R.id.result);
-		view_suggest = (TextView) findViewById(R.id.suggest);
+		/*
+		 * view_result = (TextView) findViewById(R.id.result); view_suggest =
+		 * (TextView) findViewById(R.id.suggest);
+		 */
+		Log.d(TAG, "find Views");
 	}
 
 	// Listen for button clicks
@@ -50,33 +53,13 @@ public class Bmi extends Activity {
 			// Switch to report page
 			Intent intent = new Intent();
 			intent.setClass(Bmi.this, Report.class);
+			Bundle bundle = new Bundle();
+			bundle.putString("KEY_HEIGHT", field_height.getText().toString());
+			bundle.putString("KEY_WEIGHT", field_weight.getText().toString());
+			intent.putExtras(bundle);
 			startActivity(intent);
 		}
 	};
-
-	private void openOptionsDialog() {
-		new AlertDialog.Builder(this)
-				.setTitle(R.string.about_title)
-				.setMessage(R.string.about_msg)
-				.setPositiveButton(R.string.ok_label,
-						new DialogInterface.OnClickListener() {
-							public void onClick(
-									DialogInterface dialoginterface, int i) {
-							}
-						})
-				.setNegativeButton(R.string.homepage_label,
-						new DialogInterface.OnClickListener() {
-							public void onClick(
-									DialogInterface dialoginterface, int i) {
-								// go to url
-								Uri uri = Uri
-										.parse(getString(R.string.homepage_uri));
-								Intent intent = new Intent(Intent.ACTION_VIEW,
-										uri);
-								startActivity(intent);
-							}
-						}).show();
-	}
 
 	protected static final int MENU_ABOUT = Menu.FIRST;
 	protected static final int MENU_Quit = Menu.FIRST + 1;
@@ -100,6 +83,30 @@ public class Bmi extends Activity {
 			break;
 		}
 		return true;
+	}
+
+	private void openOptionsDialog() {
+		new AlertDialog.Builder(this)
+				.setTitle(R.string.about_title)
+				.setMessage(R.string.about_msg)
+				.setPositiveButton(R.string.ok_label,
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialoginterface, int i) {
+							}
+						})
+				.setNegativeButton(R.string.homepage_label,
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialoginterface, int i) {
+								// go to url
+								Uri uri = Uri
+										.parse(getString(R.string.homepage_uri));
+								Intent intent = new Intent(Intent.ACTION_VIEW,
+										uri);
+								startActivity(intent);
+							}
+						}).show();
 	}
 
 	/*
