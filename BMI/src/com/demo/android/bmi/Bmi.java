@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,8 @@ import android.widget.EditText;
 
 public class Bmi extends Activity {
 	private static final String TAG = "Bmi";
+	public static final String PREF = "BMI_PREF";
+	public static final String PREF_HEIGHT = "BMI_Height";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class Bmi extends Activity {
 		Log.v(TAG, "onCreate");
 		setContentView(R.layout.main);
 		findViews();
+		restorePrefs();
 		setListensers();
 	}
 
@@ -43,6 +47,11 @@ public class Bmi extends Activity {
 	public void onStop() {
 		super.onStop();
 		Log.v(TAG, "onStop");
+		// Save user preferences. use Editor object to make changes.
+		SharedPreferences settings = getSharedPreferences(PREF, 0);
+		settings.edit()
+				.putString(PREF_HEIGHT, field_height.getText().toString())
+				.commit();
 	}
 
 	public void onRestart() {
@@ -72,6 +81,16 @@ public class Bmi extends Activity {
 		 * (TextView) findViewById(R.id.suggest);
 		 */
 		Log.d(TAG, "find Views");
+	}
+
+	// Restore preferences
+	private void restorePrefs() {
+		SharedPreferences settings = getSharedPreferences(PREF, 0);
+		String pref_height = settings.getString(PREF_HEIGHT, "");
+		if (!"".equals(pref_height)) {
+			field_height.setText(pref_height);
+			field_weight.requestFocus();
+		}
 	}
 
 	// Listen for button clicks
