@@ -47,29 +47,10 @@ public class Bmi extends Activity {
 
 	private Button.OnClickListener calcBMI = new Button.OnClickListener() {
 		public void onClick(View v) {
-			DecimalFormat nf = new DecimalFormat("0.00");
-			try {
-				double height = Double.parseDouble(field_height.getText()
-						.toString()) / 100;
-				double weight = Double.parseDouble(field_weight.getText()
-						.toString());
-				double BMI = weight / (height * height);
-				// Present result
-				view_result.setText(getText(R.string.bmi_result)
-						+ nf.format(BMI));
-				// Give health advice
-				if (BMI > 25) {
-					view_suggest.setText(R.string.advice_heavy);
-				} else if (BMI < 20) {
-					view_suggest.setText(R.string.advice_light);
-				} else {
-					view_suggest.setText(R.string.advice_average);
-				}
-//				openOptionsDialog();
-			} catch (Exception err) {
-				Toast.makeText(Bmi.this, R.string.input_error,
-						Toast.LENGTH_SHORT).show();
-			}
+			// Switch to report page
+			Intent intent = new Intent();
+			intent.setClass(Bmi.this, Report.class);
+			startActivity(intent);
 		}
 	};
 
@@ -121,9 +102,8 @@ public class Bmi extends Activity {
 		return true;
 	}
 
-/*	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_bmi, menu);
-		return true;
-	}*/
+	/*
+	 * @Override public boolean onCreateOptionsMenu(Menu menu) {
+	 * getMenuInflater().inflate(R.menu.activity_bmi, menu); return true; }
+	 */
 }
