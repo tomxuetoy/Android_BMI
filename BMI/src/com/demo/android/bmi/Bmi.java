@@ -19,9 +19,40 @@ public class Bmi extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.v(TAG, "onCreate");
 		setContentView(R.layout.main);
 		findViews();
 		setListensers();
+	}
+
+	public void onStart() {
+		super.onStart();
+		Log.v(TAG, "onStart");
+	}
+
+	public void onResume() {
+		super.onResume();
+		Log.v(TAG, "onResume");
+	}
+
+	public void onPause() {
+		super.onPause();
+		Log.v(TAG, "onPause");
+	}
+
+	public void onStop() {
+		super.onStop();
+		Log.v(TAG, "onStop");
+	}
+
+	public void onRestart() {
+		super.onRestart();
+		Log.v(TAG, "onReStart");
+	}
+
+	public void onDestroy() {
+		super.onDestroy();
+		Log.v(TAG, "onDestroy");
 	}
 
 	private Button button_calc;
